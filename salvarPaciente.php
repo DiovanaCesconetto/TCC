@@ -2,16 +2,20 @@
 
 include('conexao.php');
 $nome =  $_POST['nome'];
+$cpf = $_POST['CPF'];
+$RG = $_POST['RG'];
 $email = $_POST['email'];
-$senha = $_POST['senha'];
+$data_nasc = $_POST['data_nasc'];
 
-$sql = "INSERT INTO Funcionario (nome, email, senha) VALUES (:nome, :email, :senha)";
+$sql = "INSERT INTO Paciente (nome, cpf, Rg, email, data_nasc) VALUES (:nome, :cpf, :Rg, :email, :data_nasc)";
 
 $inserir = $conn->prepare( $sql );
 
 $inserir->bindParam( ':nome', $nome);
+$inserir->bindParam( ':cpf', $cpf);
+$inserir->bindParam( ':Rg', $Rg);
 $inserir->bindParam( ':email', $email);
-$inserir->bindParam( ':senha', $senha);
+$inserir->bindParam( ':data_nasc', $data_nasc);
 
 $resultado = $inserir->execute();
 
