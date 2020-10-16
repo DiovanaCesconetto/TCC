@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Simulados</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="Inicio.html">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+  
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="Login.html">Login</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+                
+        </button>
+        <a class="navbar-brand" href="CadastroBairro.html">Bairro</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <a class="navbar-brand" href="CadastroCasos.html">Casos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <a class="navbar-brand" href="cadastroPaciente.html">Paciente</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <a class="navbar-brand" href="CadastroCidade.html">Cidade</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <a class="navbar-brand" href="CadastroFuncionario.html">Funcionario</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+
+    <div class="container" >
+        <a class="links" id="paracadastro"></a>
+        <a class="links" id="paralogin"></a>
+
+        <div class="content">
+
+
+            <!--FORMULÁRIO DE CADASTRO-->
+            <div id="cadastro">
+                <form method="post" action="login_senha.php">
+                    <h1>Cadastro</h1>
+
+
+                    <p>
+                        <label for="email_cad">Seu e-mail</label>
+                        <input id="email_login" name="email_login" required="required" type="email" placeholder="contato@htmlecsspro.com"/>
+                    </p>
+
+                    <p>
+                        <label for="senha_cad">Sua senha</label>
+                        <input id="senha_login" name="senha_login" required="required" type="password" placeholder="ex. 1234"/>
+                    </p>
+                    <p>
+                        <label class="errosenha">
+
+                        </label>
+
+                    </p>
+
+                    <p>
+                        <input type="submit" name="entrar" value="Login"/>
+                    </p>
+
+                    <p class="link">
+                        Ainda não tem conta?
+                        <a href="Cadastrar.php"> Cadastre-se </a>
+                    </p>
+                </form>
+
+            </div>
+      </div>
+    </div>
+</body>
+</html>
+
+
+<?php
+/*
+if (!isset($_SESSION)) {
+    session_start();
+}
+   if ((isset($_SESSION['erro_senha']) == "errosenha")) {
+     echo "E-mail ou senha incorreto!";
+   }
+   */
+?>
