@@ -1,9 +1,15 @@
 <?php
 
-$HOST ="localhost";
+    $host = "localhost";
+    $usuario = "";
+    $senha = "";
+    $banco = "bancoTcc";
 
-$USER = "root";
-$PASSWORD = "";
-$DATABASE = "bancoTcc";
+    $conn = new PDO("mysql::host=".$host.";dbname=".$banco,$usuario,$senha);
 
-$conn = new PDO('mysql:host=' . $HOST . ';dbname='. $DATABASE, $USER, $PASSWORD);
+
+
+
+
+
+?>
