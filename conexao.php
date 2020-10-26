@@ -1,15 +1,10 @@
 <?php
 
     $host = "localhost";
-    $usuario = "";
+    $usuario = "root";
     $senha = "";
-    $banco = "bancoTcc";
+    $banco = "bancotcc";
 
     $conn = new PDO("mysql::host=".$host.";dbname=".$banco,$usuario,$senha);
-
-
-
-
-
 
 ?>
