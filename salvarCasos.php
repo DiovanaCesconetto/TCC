@@ -2,17 +2,21 @@
 
 include('conexao.php');
 
-$nome =  $_POST['nome'];
+
+
+$id_paciente =  $_POST['id_paciente'];
 $data =  $_POST['data_caso'];
 $observacoes = $_POST['observacoes'];
 
-$sql = "INSERT INTO Casos ( nome, data_caso, observacoes) VALUES ( :nome, :data_caso, :observacoes)";
+$sql = "INSERT INTO registro_caso ( observacoes, Data, Id_funcionario, Id_paciente) 
+    VALUES ( :observacoes, :data_caso, 1, :id_paciente)";
 
 $inserir = $conn->prepare( $sql );
 
-$inserir->bindParam( ':nome', $nome);
-$inserir->bindParam( ':data_caso', $data_caso);
 $inserir->bindParam( ':observacoes', $observacoes);
+$inserir->bindParam( ':data_caso', $data);
+$inserir->bindParam( ':id_paciente', $id_paciente);
+
 
 $resultado = $inserir->execute();
 
@@ -21,7 +25,7 @@ if ( ! $resultado )
     var_dump( $inserir->errorInfo() );
     exit;
 }else{
-    echo "Cadastro Realizado Com Sucesso";
+    echo "<script>alert('Cadastro Realizado Com Sucesso');</script>";
 }
 
 

@@ -1,3 +1,6 @@
+<?php
+require_once('conexao.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -34,27 +37,27 @@
                 <span class="navbar-toggler-icon"></span>
                 
           </button>
-          <a class="navbar-brand" href="CadastroBairro.html">Bairro</a>
+          <a class="navbar-brand" href="CadastroBairro.php">Bairro</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
           </button>
     
-          <a class="navbar-brand" href="CadastroCasos.html">Casos</a>
+          <a class="navbar-brand" href="CadastroCasos.php">Casos</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
           </button>
           
-          <a class="navbar-brand" href="cadastroPaciente.html">Paciente</a>
+          <a class="navbar-brand" href="cadastroPaciente.php">Paciente</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
           </button>
     
-          <a class="navbar-brand" href="CadastroCidade.html">Cidade</a>
+          <a class="navbar-brand" href="CadastroCidade.php">Cidade</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
           </button>
     
-          <a class="navbar-brand" href="CadastroFuncionario.html">Funcionario</a>
+          <a class="navbar-brand" href="CadastroFuncionario.php">Funcionario</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -74,18 +77,39 @@
     <form action="salvarCasos.php" method="POST">
        
         <div class="form-group">
-            <label for="nome">Nome do paciente</label>
-            <input type="text" class="form-control" id="nome" name="nome">
+        <select class="form-control" id="id_paciente" name="id_paciente">
+          <?php 
+              $sql = "SELECT
+                        p.Id_paciente as id_paciente
+                          ,p.Nome as nome
+                      from  paciente p
+                      order by p.Nome;";
+              //Preparando o sql para ser executado
+              $stmt = $conn->prepare( $sql ); 
+              //Aqui ele esta executando o sql            
+              $stmt->execute();
+              //Aqui ele esta coletando os dados com o metodo fetchAll, quue pega todos os registros do banco
+              $pacientes = $stmt->fetchAll();
+            
+              //Aqui ele vai iterar ou seja percorrer o array/lista 
+              //de pacientes retornados do banco de dados;
+              foreach ($pacientes as $key => $value) {
+                echo "<option value='".$value['id_paciente']."'>". $value['nome']."</option>";
+              }
+          ?>
+          <!-- <option>Lucas Giori</option>
+          <option>Diviona</option> -->
+        </select>
           </div>
           <div class="form-group">
             <label for="data_caso">Data do caso</label>
             <input type="date" class="form-control" id="data_caso" name="data_caso">
           </div>
           <div class="form-group">
-            <label for="exampleFormControlTextarea1">Observações</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="observacoes">Observações</label>
+            <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
           </div>
-          <button class="btn btn-primary" type="submit">Cadastrar</button>
-
+          <button class="btn btn-primary" type="submit">Cadastrar</button>  
+    </form>
         </body>
         </html>

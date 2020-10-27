@@ -71,7 +71,7 @@
       </div>
     </nav>
     <h3><center>Cadastrar Cidade</center></h3></br>
-    <form action="salvarFuncionario.php" method="POST" >
+    <form action="salvarCidade.php method="POST" >
         <div class="form-group">
           <div class="col-8">
 
@@ -79,13 +79,17 @@
             <input type="text" class="form-control" id="nome"  name="nome" >
           </div>
           
-        <div class="form-group">
-          <div class="col-8">
 
-            <label >Insira o estado</label>
-            <input type="text" class="form-control" id="estado" name="estado">
-          </div><br><br>
-          <button class="btn btn-primary" type="submit" value="Salvar">Cadastrar</button>
+            <div class="form-group col-md-4">
+              <label for="inputCidade">Estado</label>
+              <select id="inputCidade" class="form-control">
+                <option selected>Escolher...</option>
+                <option>...</option>
+              </select>
+            </div>
+
+
+      </div><br><br>
           </form>
         </body>
        </html>
