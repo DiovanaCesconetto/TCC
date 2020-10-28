@@ -1,3 +1,7 @@
+<?php
+require_once('conexao.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -30,32 +34,32 @@
         <span class="navbar-toggler-icon"></span>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="Login.html">Login</a>
+            <a class="navbar-brand" href="  ">Login</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
               <span class="navbar-toggler-icon"></span>
               
       </button>
-      <a class="navbar-brand" href="CadastroBairro.html">Bairro</a>
+      <a class="navbar-brand" href="CadastroBairro.php">Bairro</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a class="navbar-brand" href="CadastroCasos.html">Casos</a>
+      <a class="navbar-brand" href="CadastroCasos.php">Casos</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
       
-      <a class="navbar-brand" href="cadastroPaciente.html">Paciente</a>
+      <a class="navbar-brand" href="cadastroPaciente.php">Paciente</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a class="navbar-brand" href="CadastroCidade.html">Cidade</a>
+      <a class="navbar-brand" href="CadastroCidade.php">Cidade</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a class="navbar-brand" href="CadastroFuncionario.html">Funcionario</a>
+      <a class="navbar-brand" href="CadastroFuncionario.php">Funcionario</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -83,12 +87,29 @@
 
             <div class="form-group col-md-4">
                 <label for="inputCidade">Cidade</label>
-                <select id="inputCidade" class="form-control">
-                  <option selected>Escolher...</option>
-                  <option>...</option>
-                </select>
-              </div>
-
+                <select class="form-control" id="id_cidade" name="id_cidade">
+          <?php 
+              $sql = "SELECT
+                        Id_cidade as id_cidade
+                          ,nome as nome
+                      from  cidade 
+                      order by Nome;";
+              //Preparando o sql para ser executado
+              $consulta = $conn->prepare( $sql ); 
+              //Aqui ele esta executando o sql            
+              $consulta->execute();
+              //Aqui ele esta coletando os dados com o metodo fetchAll, quue pega todos os registros do banco
+              $cidade = $consulta->fetchAll();
+            
+              //Aqui ele vai iterar ou seja percorrer o array/lista 
+              //de pacientes retornados do banco de dados;
+              foreach ($cidade as $key => $value) {
+                echo "<option value='".$value['id_cidade']."'>". $value['nome']."</option>";
+              }
+          ?>
+          <!-- <option>Lucas Giori</option>
+          <option>Diviona</option> -->
+        </select>
 
         </div><br><br>
           <button class="btn btn-primary" type="submit" value="Salvar">Cadastrar</button>

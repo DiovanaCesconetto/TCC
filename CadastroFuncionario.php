@@ -30,42 +30,41 @@
     <title>Pagina inicial</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="Inicio.html">Inicio</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="Login.html">Login</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-              <span class="navbar-toggler-icon"></span>
-              
+          <a class="navbar-brand" href=" ">Login</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+            
       </button>
-      <a class="navbar-brand" href="CadastroBairro.html">Bairro</a>
+      <a class="navbar-brand" href="CadastroBairro.php">Bairro</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a class="navbar-brand" href="CadastroCasos.html">Casos</a>
+      <a class="navbar-brand" href="CadastroCasos.php">Casos</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
+
       <a class="navbar-brand" href="cadastroPaciente.html">Paciente</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a class="navbar-brand" href="CadastroCidade.html">Cidade</a>
+      <a class="navbar-brand" href="CadastroCidade.php">Cidade</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a class="navbar-brand" href="CadastroFuncionario.html">Funcionario</a>
+      <a class="navbar-brand" href="CadastroFuncionario.php">Funcionario</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
       
        
   </div>
