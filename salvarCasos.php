@@ -25,7 +25,7 @@ if ( ! $resultado )
     var_dump( $inserir->errorInfo() );
     exit;
 }else{
-    echo "<script>alert('Cadastro Realizado Com Sucesso');</script>";
+    echo "<script language= 'javascript' type='text/javascript'>alert('Cadastro de Caso realizado com sucesso!');window.location.href='painel.php';</script>"; 
 }
 
 

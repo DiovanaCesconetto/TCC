@@ -22,6 +22,7 @@ if ( ! $resultado )
     exit;
 }else{
     echo "Cadastro Realizado Com Sucesso";
+    header('Location: painel.php');
 }
 
 

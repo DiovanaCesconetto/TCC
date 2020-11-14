@@ -18,7 +18,7 @@ if ( ! $resultado )
     var_dump( $inserir->errorInfo() );
     exit;
 }else{
-    echo "Cadastro Realizado Com Sucesso";
+    echo "<script language= 'javascript' type='text/javascript'>alert('Cadastro de Cidade realizado com sucesso!');window.location.href='painel.php';</script>"; 
 }
 
 
