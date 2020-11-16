@@ -56,7 +56,7 @@ require_once('menu.html');
             <label for="bairro">Bairro do paciente</label>
             <input type="text" class="form-control" id="bairro"  name="bairro">
           </div>
-<<<<<<< HEAD
+
 
           <div class="form-group">
           <div class="col-8">
@@ -113,17 +113,6 @@ require_once('menu.html');
                 <option value="SE">Sergipe</option>
                 <option value="TO">Tocantins</option>
 </select>
-
-=======
-          <div class="form-group">
-            <label for="cidade">Cidade do paciente</label>
-            <input type="text" class="form-control" id="cidade"  name="cidade">
-
-          <div class="form-group">
-            <label for="estado">Estado do paciente</label>
-            <input type="text" class="form-control" id="estado"  name="estado">
-          </div>
->>>>>>> 4c13dd1001971a7b5bfcb2bdfc20e096a9bf810c
         <div class="form-group">
           <label for="email">Insira o email do paciente</label>
           <input type="text" class="form-control" id="email" placeholder="nome@exemplo.com"  name="email">
