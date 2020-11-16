@@ -33,7 +33,7 @@ require_once('menu.html');
                 echo "<option value='".$value['id_paciente']."'>". $value['nome']."</option>";
               }
           ?>
-          <!-- <option>Lucas Giori</option>
+          <!-- <option>ll</option>
           <option>Diviona</option> -->
         </select>
           </div>

@@ -56,14 +56,63 @@ require_once('menu.html');
             <label for="bairro">Bairro do paciente</label>
             <input type="text" class="form-control" id="bairro"  name="bairro">
           </div>
-          <div class="form-group">
-            <label for="cidade">Cidade do paciente</label>
-            <input type="text" class="form-control" id="cidade"  name="cidade">
 
           <div class="form-group">
-            <label for="estado">Estado do paciente</label>
-            <input type="text" class="form-control" id="estado"  name="estado">
-          </div>
+          <div class="col-8">
+
+            <div class="form-group col-md-4">
+                <label for="inputCidade">Cidade</label>
+                <select class="form-control" id="id_cidade" name="id_cidade">
+          <?php 
+              $sql = "SELECT
+                        Id_cidade as id_cidade
+                          ,nome as nome
+                      from  cidade 
+                      order by Nome;";
+              $consulta = $conn->prepare( $sql );          
+              $consulta->execute();
+              $cidade = $consulta->fetchAll();
+            
+              foreach ($cidade as $key => $value) {
+                echo "<option value='".$value['id_cidade']."'>". $value['nome']."</option>";
+              }
+          ?>
+        </select>
+
+
+            <div class="form-group col-md-4">
+              <label for="inputCidade">Estado</label>
+              <select id="estado" name="estado">
+                <option value="">Selecione</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espirito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+</select>
+
         <div class="form-group">
           <label for="email">Insira o email do paciente</label>
           <input type="text" class="form-control" id="email" placeholder="nome@exemplo.com"  name="email">
