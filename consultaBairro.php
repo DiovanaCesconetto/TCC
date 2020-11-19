@@ -8,12 +8,14 @@ require_once('menu.html');
 
 if (empty($termo)):*/
 
-	$sql = "SELECT b.id_bairro, b.nome as nome_bairro, c.nome as nome_cidade, c.estado
-	FROM bairro AS b
-	LEFT JOIN cidade AS c ON b.id_cidade = c.id_cidade ";
-	$stm = $conn->prepare($sql);
-	$stm->execute();
-	$Bairros = $stm->fetchAll(PDO::FETCH_OBJ);
+$sql = "SELECT b.id_bairro, b.nome as nome_bairro, c.nome as nome_cidade, c.estado
+FROM bairro AS b
+inner JOIN cidade AS c ON b.id_cidade = c.id_cidade ";
+$stm = $conn->prepare($sql);
+$stm->execute();
+$Bairros = $stm->fetchAll(PDO::FETCH_OBJ);
+
+
 /*
 else:
 

@@ -30,18 +30,7 @@ endif;*/
 	<div class='container'>
 		<fieldset>
 <?php
-/*
-			<form action="" method="get" id='form-contato' class="form-horizontal col-md-06">
-				<label class="col-md-2 control-label" for="termo">Pesquisar</label>
-				<div class='col-md-6'>
-			    	<input type="text" class="form-control" id="termo" name="termo" placeholder="Infome o Nome do Bairro">
-				</div>
-		
-				<button type="submit" class="btn btn-primary">Pesquisar</button>
-				<a href='consultafuncionario.php' class="btn btn-primary">Ver Todos</a>
-			
-			</form>
-*/
+
 ?>
 			<div class='clearfix'></div>
 

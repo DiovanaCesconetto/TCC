@@ -4,7 +4,7 @@ include('conexao.php');
 
 $id_funcionario = $_GET['$id_funcionario'];
 
-$sql = "DELETE from cidade  WHERE $id_funcionario = '$id_funcionario' ";
+$sql = "DELETE from Funcionario  WHERE $id_funcionario = '$id_funcionario' ";
 $excluir = $conn->prepare( $sql );
 $resultado = $excluir->execute();
 
