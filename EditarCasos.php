@@ -37,13 +37,12 @@ endif;
 				<form action="salvaEdicaoCasos.php" method="post" id='form-contato' enctype='multipart/form-data'>
 				
  
-		
-            <div class="form-group">
+                <div class="form-group">
           <div class="col-8">
-            <label>Nome do caso</label>
-            <input type="text" class="form-control" id="nome"  name="nome" value="<?=$id_registro->nome?>" >
+            <label>Nome da cidade</label>
+            <input type="text" class="form-control" id="nome"  name="nome" value="<?=$cidade->nome?>" >
           </div>
-
+          
           <div class="form-group">
           <div class="col-8">
             <label>Nome do Paciente</label>

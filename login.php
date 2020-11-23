@@ -4,7 +4,7 @@ require_once('conexao_login.php');
 
 
 if(empty($_POST['usuario']) || empty($_POST['senha'])) {
-	header('Location: index.php');
+	header('Location: inicio.php');
 	exit();
 }
 
@@ -27,6 +27,6 @@ if($row == 1) {
 	exit();
 } else {
 	$_SESSION['nao_autenticado'] = true;
-	header('Location: index.php');
+	header('Location: inicio.php');
 	exit();
 }

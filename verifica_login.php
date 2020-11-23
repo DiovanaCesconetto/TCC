@@ -6,6 +6,6 @@ if(!isset($_SESSION))
 } 
 
 if(!$_SESSION['usuario']) {
-	header('Location: index.php');
+	header('Location: inicio.php');
 	exit();
 }

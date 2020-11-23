@@ -3,17 +3,15 @@
 include('conexao.php');
 require_once('menu.html');
 
-// Recebe o termo de pesquisa 
-/*$termo = (isset($_GET['termo'])) ? $_GET['termo'] : '';
 
-if (empty($termo)):*/
 
-	$sql = "SELECT b.id_funcionario, b.nome as nome_funcionario, c.nome as nome_cidade, c.estado
-	FROM funcionario AS b
-	LEFT JOIN cidade AS c ON b.id_cidade = c.id_cidade ";
+	$sql = "SELECT b.id_paciente, b.nome AS nome_paciente, b.data_nasc, b.email, c.nome AS nome_bairro, d.nome AS nome_cidade, d.estado 
+	FROM paciente AS b
+	INNER JOIN bairro AS c ON b.id_endereco = c.id_bairro
+	INNER JOIN cidade AS d ON c.id_cidade = d.id_cidade";
 	$stm = $conn->prepare($sql);
 	$stm->execute();
-	$funcionario = $stm->fetchAll(PDO::FETCH_OBJ);
+	$paciente = $stm->fetchAll(PDO::FETCH_OBJ);
 /*
 else:
 
@@ -52,19 +50,26 @@ endif;*/
 					<tr class='active'>
 						<th>ID</th>
 						<th>Nome do paciente</th>
-						<th>Cidade</th>
-						<th>Estado</th>
+						<th>nascimento</th>
+						<th>email</th>
+						<th>nome do bairro </th>
+						<th>nome da cidade</th>
+						<th>estado</th>
 						<th>Operação</th>
 					</tr>
 					<?php foreach($paciente as $paciente):?>
 						<tr>
 							<td><?=$paciente->id_paciente?></td>
 							<td><?=$paciente->nome_paciente?></td>
+							<td><?=$paciente->data_nasc?></td>
+							<td><?=$paciente->email?></td>
+							<td><?=$paciente->nome_bairro?></td>
 							<td><?=$paciente->nome_cidade?></td>
 							<td><?=$paciente->estado?></td>
+
 							<td>
 								<a href='Editarpaciente.php?id_paciente=<?=$paciente->id_paciente?>' class="btn btn-primary">Editar</a>
-								<a href='Excluirpaciente.php?id_paciente=<?=$v->id_paciente?>' class="btn btn-danger">Excluir</a>
+								<a href='ExcluirPaciente.php?id_paciente=<?=$paciente->id_paciente?>' class="btn btn-danger">Excluir</a>
 							</td>
 						</tr>	
 					<?php endforeach;?>

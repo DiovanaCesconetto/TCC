@@ -6,7 +6,12 @@ $id_funcionario = (isset($_GET['id_funcionario'])) ? $_GET['id_funcionario'] : '
 
 if (!empty($id_funcionario) && is_numeric($id_funcionario)):
  
-	$sql = "SELECT b.id_funcionario, b.nome, b.id_cidade FROM funcionario AS b LEFT JOIN cidade AS c ON b.id_cidade = c.id_cidade WHERE id_bairro = '$id_bairro' ";
+	$sql = "SELECT b.id_funcionario, b.nome, b.id_cidade 
+  FROM funcionario AS b 
+  LEFT JOIN cidade AS c 
+  ON b.id_cidade = c.id_cidade 
+  WHERE id_bairro = '$id_bairro' ";
+  
 	$stm = $conn->prepare($sql);
 	$stm->execute();
 	$funcionario = $stm->fetch(PDO::FETCH_OBJ);
