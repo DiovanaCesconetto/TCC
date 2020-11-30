@@ -3,29 +3,12 @@
 include('conexao.php');
 require_once('menu.html');
 
-// Recebe o termo de pesquisa 
-/*$termo = (isset($_GET['termo'])) ? $_GET['termo'] : '';
-
-if (empty($termo)):*/
-
-	$sql = "SELECT b.id_funcionario, b.nome as nome_funcionario, c.nome as nome_cidade, c.estado
-	FROM funcionario AS b
-	LEFT JOIN cidade AS c ON b.id_cidade = c.id_cidade ";
-	$stm = $conn->prepare($sql);
-	$stm->execute();
-	$funcionario = $stm->fetchAll(PDO::FETCH_OBJ);
-/*
-else:
-
-	$sql = "SELECT b.id_funcionario, b.nome as nome_funcionario, c.nome as nome_cidade, c.estado
-	FROM funcionario AS b
-	LEFT JOIN cidade AS c ON b.id_cidade = c.id_cidade 
-	WHERE b.nome LIKE '%$termo%'";
+	$sql = "SELECT f.id_funcionario, f.nome AS nome_funcionario, f.email, IF (f.usuario_admin = 1, 'Sim', 'Não') AS admin
+	FROM funcionario AS f";
 	$stm = $conn->prepare($sql);
 	$stm->execute();
 	$funcionario = $stm->fetchAll(PDO::FETCH_OBJ);
 
-endif;*/
 ?>
 	<div class='container'>
 		<fieldset>
@@ -41,16 +24,16 @@ endif;*/
 					<tr class='active'>
 						<th>ID</th>
 						<th>Nome do funcionario</th>
-						<th>Cidade</th>
-						<th>Estado</th>
+						<th>E-mail</th>
+						<th>Usuário Admin</th>
 						<th>Operação</th>
 					</tr>
 					<?php foreach($funcionario as $funcionario):?>
 						<tr>
 							<td><?=$funcionario->id_funcionario?></td>
 							<td><?=$funcionario->nome_funcionario?></td>
-							<td><?=$funcionario->nome_cidade?></td>
-							<td><?=$funcionario->estado?></td>
+							<td><?=$funcionario->email?></td>
+							<td><?=$funcionario->admin?></td>
 							<td>
 								<a href='Editarfuncionario.php?id_funcionario=<?=$funcionario->id_funcionario?>' class="btn btn-primary">Editar</a>
 								<a href='Excluirfuncionario.php?id_funcionario=<?=$funcionario->id_funcionario?>' class="btn btn-danger">Excluir</a>

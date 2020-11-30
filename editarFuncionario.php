@@ -2,23 +2,27 @@
 require_once('conexao.php');
 require_once('menu.html');
 
+$email = $_SESSION['email'];
+
+$verificaAdmin = $conn->query("select usuario_admin from funcionario WHERE usuario_admin = 1 and email = '$email'");
+if( $verificaAdmin->rowCount() == 0 ){
+    echo "<script language= 'javascript' type='text/javascript'>alert('Somente funcionário administrador pode realizar a edição!');window.location.href='Painel.php';</script>"; 
+}
+  
+
+
 $id_funcionario = (isset($_GET['id_funcionario'])) ? $_GET['id_funcionario'] : '';
 
 if (!empty($id_funcionario) && is_numeric($id_funcionario)):
  
-	$sql = "SELECT b.id_funcionario, b.nome, b.id_cidade 
-  FROM funcionario AS b 
-  LEFT JOIN cidade AS c 
-  ON b.id_cidade = c.id_cidade 
-  WHERE id_bairro = '$id_bairro' ";
-  
+	$sql = "SELECT f.id_funcionario, f.nome AS nome_funcionario, f.email, f.usuario_admin
+  FROM funcionario AS f";
 	$stm = $conn->prepare($sql);
 	$stm->execute();
 	$funcionario = $stm->fetch(PDO::FETCH_OBJ);
  
 endif;
  
-
 ?>
 
 
@@ -26,9 +30,9 @@ endif;
 <html>
 <head>
     <meta charset="utf-8">
-	<title>Edição de Cliente</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	  <title>Edição de Cliente</title>
+	  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	  <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body>
 	<div class='container'>
@@ -38,36 +42,31 @@ endif;
 			<?php if(empty($funcionario)):?>
 				<h3 class="text-center text-danger">funcionario não encontrado!</h3>
 			<?php else: ?>
-				<form action="salvaEdicaofuncionario.php" method="post" id='form-contato' enctype='multipart/form-data'>
+				<form action="salvarEdicaofuncionario.php" method="post" id='form-contato' enctype='multipart/form-data'>
 				
- 
-		
-            <div class="form-group">
-          <div class="col-8">
-            <label>Nome do funcionario</label>
-            <input type="text" class="form-control" id="nome"  name="nome" value="<?=$funcionario->nome?>" >
-          </div>
-          
-        <div class="form-group">
-          <div class="col-8">
+          <div class="form-row">
+    	      <div class="form-group col-md-6">
+        	    <label for="nome">Nome</label>
+              <input type="text" class="form-control" id="nome"  name="nome" value="<?=$funcionario->nome_funcionario?>" >
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="email">E-mail</label>
+              <input type="text" class="form-control" id="email" name="email" value="<?=$funcionario->email?>">
+            </div>
 
             <div class="form-group col-md-4">
-                <label for="inputCidade">Cidade</label>
-                <select class="form-control" id="id_cidade" name="id_cidade">
-          <?php 
-              $sql = "SELECT
-                        Id_cidade as id_cidade
-                          ,nome as nome
-                      from  cidade 
-                      order by Nome;";
-              $consulta = $conn->prepare( $sql );          
-              $consulta->execute();
-              $cidade = $consulta->fetchAll();
+              <label for="senha">Senha</label>
+              <input type = "password" class="form-control"  id = "senha" name = "senha"  >	
+            </div>
 
-              foreach ($cidade as $key => $value) {
-                echo "<option value='".$value['id_cidade']."'>". $value['nome']."</option>";
-              }
-          ?>
+            <div class="form-group col-md-4">
+              <label> Usuário Administrador: </label>
+              <input type="checkbox" name="usuario_admin" id="usuario_admin"> <br/> 
+            </div>
+          </div>
+   
+
 				    <input type="hidden" name="id_funcionario" value="<?=$funcionario->id_funcionario?>">
 				    <button type="submit" class="btn btn-primary" id='botao'> 
 				      Gravar

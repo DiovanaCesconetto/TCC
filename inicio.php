@@ -25,7 +25,7 @@ session_start();
                         if(isset($_SESSION['nao_autenticado'])):
                     ?>
                     <div class="notification is-danger">
-                      <p>ERRO: Usuário ou senha inválidos.</p>
+                      <p>ERRO: E-mail ou senha inválidos.</p>
                     </div>
                     <?php
                         endif;
@@ -35,7 +35,7 @@ session_start();
                         <form action="login.php" method="POST">
                             <div class="field">
                                 <div class="control">
-                                    <input name="usuario" name="text" class="input is-large" placeholder="Seu usuário" autofocus="">
+                                    <input name="email" name="text" class="input is-large" placeholder="Seu e-mail" autofocus="">
                                 </div>
                             </div>
 

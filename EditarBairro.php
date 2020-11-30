@@ -35,34 +35,27 @@ endif;
 			<?php else: ?>
 				<form action="salvaEdicaoBairro.php" method="post" id='form-contato' enctype='multipart/form-data'>
 				
- 
-		
-            <div class="form-group">
-          <div class="col-8">
-            <label>Nome do bairro</label>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label>Bairro</label>
             <input type="text" class="form-control" id="nome"  name="nome" value="<?=$bairro->nome?>" >
           </div>
           
-        <div class="form-group">
-          <div class="col-8">
-
-            <div class="form-group col-md-4">
-                <label for="inputCidade">Cidade</label>
-                <select class="form-control" id="id_cidade" name="id_cidade">
-          <?php 
-              $sql = "SELECT
-                        Id_cidade as id_cidade
-                          ,nome as nome
-                      from  cidade 
-                      order by Nome;";
-              $consulta = $conn->prepare( $sql );          
-              $consulta->execute();
-              $cidade = $consulta->fetchAll();
-
-              foreach ($cidade as $key => $value) {
-                echo "<option value='".$value['id_cidade']."'>". $value['nome']."</option>";
-              }
-          ?>
+          <div class="form-group col-md-4">  
+            <label for="inputCidade">Cidade</label>
+              <select class="form-control" id="id_cidade" name="id_cidade">
+              <?php 
+                $sql = "SELECT Id_cidade as id_cidade,nome as nome from cidade order by Nome;";
+                $consulta = $conn->prepare( $sql );          
+                $consulta->execute();
+                $cidade = $consulta->fetchAll();
+                foreach ($cidade as $key => $value) {
+                  echo "<option value='".$value['id_cidade']."'>". $value['nome']."</option>";
+                }
+              ?>
+              </select>
+            </div>
+          </div>
 				    <input type="hidden" name="id_bairro" value="<?=$bairro->id_bairro?>">
 				    <button type="submit" class="btn btn-primary" id='botao'> 
 				      Gravar

@@ -4,7 +4,7 @@ include('conexao.php');
 
 $nome =  $_POST['nome'];
 $email = $_POST['email'];
-$senha = $_POST['senha'];
+$senha = MD5($_POST['senha']);
 
 $sql = "INSERT INTO Funcionario (nome, email, senha) VALUES (:nome, :email, :senha)";
 
