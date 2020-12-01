@@ -9,22 +9,18 @@ if( $verificaAdmin->rowCount() == 0 ){
     echo "<script language= 'javascript' type='text/javascript'>alert('Somente funcionário administrador pode realizar a edição!');window.location.href='Painel.php';</script>"; 
 }
   
-
-
 $id_funcionario = (isset($_GET['id_funcionario'])) ? $_GET['id_funcionario'] : '';
 
-if (!empty($id_funcionario) && is_numeric($id_funcionario)):
- 
+if (!empty($id_funcionario) && is_numeric($id_funcionario) ):
 	$sql = "SELECT f.id_funcionario, f.nome AS nome_funcionario, f.email, f.usuario_admin
-  FROM funcionario AS f";
+	FROM funcionario AS f
+	WHERE id_funcionario = '$id_funcionario' " ;
 	$stm = $conn->prepare($sql);
 	$stm->execute();
 	$funcionario = $stm->fetch(PDO::FETCH_OBJ);
- 
 endif;
  
 ?>
-
 
 <!DOCTYPE html>
 <html>

@@ -5,42 +5,20 @@ require_once('menu.html');
 
 
 
-	$sql = "SELECT b.id_paciente, b.nome AS nome_paciente, b.data_nasc, b.email, c.nome AS nome_bairro, d.nome AS nome_cidade, d.estado 
-	FROM paciente AS b
-	INNER JOIN bairro AS c ON b.id_endereco = c.id_bairro
-	INNER JOIN cidade AS d ON c.id_cidade = d.id_cidade";
+	$sql = "SELECT p.id_paciente, p.nome AS nome_paciente, p.data_nasc, p.email, e.numero,
+	e.rua, e.cep, b.nome AS nome_bairro, c.nome AS nome_cidade, c.estado 
+	FROM paciente AS p
+	INNER JOIN endereco AS e ON p.id_endereco = e.id_endereco
+	INNER JOIN bairro AS b ON e.id_bairro = b.id_bairro
+	INNER JOIN cidade AS c ON c.id_cidade = b.id_cidade";
 	$stm = $conn->prepare($sql);
 	$stm->execute();
 	$paciente = $stm->fetchAll(PDO::FETCH_OBJ);
-/*
-else:
 
-	$sql = "SELECT b.id_funcionario, b.nome as nome_funcionario, c.nome as nome_cidade, c.estado
-	FROM funcionario AS b
-	LEFT JOIN cidade AS c ON b.id_cidade = c.id_cidade 
-	WHERE b.nome LIKE '%$termo%'";
-	$stm = $conn->prepare($sql);
-	$stm->execute();
-	$funcionario = $stm->fetchAll(PDO::FETCH_OBJ);
-
-endif;*/
 ?>
 	<div class='container'>
 		<fieldset>
-<?php
-/*
-			<form action="" method="get" id='form-contato' class="form-horizontal col-md-06">
-				<label class="col-md-2 control-label" for="termo">Pesquisar</label>
-				<div class='col-md-6'>
-			    	<input type="text" class="form-control" id="termo" name="termo" placeholder="Infome o Nome do Bairro">
-				</div>
-		
-				<button type="submit" class="btn btn-primary">Pesquisar</button>
-				<a href='consultafuncionario.php' class="btn btn-primary">Ver Todos</a>
-			
-			</form>
-*/
-?>
+
 			<div class='clearfix'></div>
 
 			<?php if(!empty($paciente)):?>
@@ -61,7 +39,7 @@ endif;*/
 						<tr>
 							<td><?=$paciente->id_paciente?></td>
 							<td><?=$paciente->nome_paciente?></td>
-							<td><?=$paciente->data_nasc?></td>
+							<td><?=date('d/m/Y', strtotime($paciente->data_nasc))?></td>
 							<td><?=$paciente->email?></td>
 							<td><?=$paciente->nome_bairro?></td>
 							<td><?=$paciente->nome_cidade?></td>

@@ -7,13 +7,13 @@ require_once('menu.html');
   
   <form action="salvarPaciente.php" method="POST">
     <div class="form-row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-6 " >
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome">
+        <input type="text" class="form-control " id="nome" name="nome" >
       </div>
       <div class="form-group col-md-3">
         <label for="CPF">CPF</label>
-        <input type="text" class="form-control" id="CPF" name="CPF">
+        <input type="text" class="form-control" id="CPF" name="CPF" >
       </div>
       <div class="form-group col-md-3">
         <label for="RG">RG</label>

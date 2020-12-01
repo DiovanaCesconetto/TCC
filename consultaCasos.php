@@ -28,9 +28,9 @@ require_once('menu.html');
 
 						<th>ID</th>
 						<th>Nome do paciente</th>
-						<th>Nome do funcionario</th>
-						<th>data do caso</th>
-						<th>observacoes</th>
+						<th>Cadastrado por</th>
+						<th>Data do caso</th>
+						<th>Observações</th>
 						<th>Operação</th>
 					</tr>
 					<?php foreach($Casos as $casos):?>
@@ -38,7 +38,7 @@ require_once('menu.html');
 							<td><?=$casos->id_registro?></td>
 							<td><?=$casos->nome_paciente?></td>
 							<td><?=$casos->nome_funcionario?></td>
-							<td><?=$casos->data_caso?></td>
+							<td><?=date('d/m/Y', strtotime($casos->data_caso))?></td>
 							<td><?=$casos->observacoes?></td>
 
 							<td>

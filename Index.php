@@ -30,7 +30,8 @@ include('conexao.php');
 $sql = "SELECT c.data , b.nome AS nome_bairro, cid.nome AS nome_cidade, cid.estado, COUNT(c.id_registro) AS quantidade_caso
 FROM registro_caso AS c 
 INNER JOIN paciente AS p ON c.id_paciente = p.id_paciente
-INNER JOIN bairro AS b ON p.id_endereco = b.id_bairro
+INNER JOIN endereco AS e ON p.id_endereco = e.id_endereco
+INNER JOIN bairro AS b ON e.id_bairro = b.id_bairro
 INNER JOIN cidade AS cid ON b.id_cidade = cid.id_cidade
 GROUP BY c.data, b.nome, cid.nome, cid.estado ";
 $stm = $conn->prepare($sql);
@@ -58,7 +59,7 @@ $Casos = $stm->fetchAll(PDO::FETCH_OBJ);
 					<?php foreach($Casos as $caso):?>
 						<tr>
                             <td><?=$caso->quantidade_caso?></td>
-							<td><?=$caso->data?></td>
+							<td><?=date('d/m/Y', strtotime($caso->data))?></td>
 							<td><?=$caso->nome_bairro?></td>
 							<td><?=$caso->nome_cidade?></td>
                             <td><?=$caso->estado?></td>                           
